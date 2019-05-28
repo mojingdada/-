@@ -1,0 +1,3 @@
+1.flask配置信息
+SQLALCHEMY_DATABASE_URI 用于连接数据的数据库
+SECRET_KEY Flask使用这个密钥来对cookies和别的东西进行签名。你应该在instance文件夹中设定这个值，并不要把它放入版本控制中。

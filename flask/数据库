@@ -1,0 +1,36 @@
+采用mysql数据库连接模式，需要导入flask-sqlalchemy,flask-migrate,pymysql
+1.在配置文件中添加数据库连接信息
+#格式为mysql+pymysql://数据库用户名:密码@数据库地址:端口号/数据库的名字?数据库格式
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:3920052000@localhost:3306/flaskblog?charset=utf8'
+2.数据库初始设置
+#建立数据库关系
+db = SQLAlchemy(app)
+#绑定app和数据库，以便进行操作
+migrate = Migrate(app,db)
+3.建立数据库模型model
+4.数据库初始化
+flask db init
+5.创建数据库管理工具
+flask db migrate -m 'users_table'
+6.创建数据库中的表
+flask db upgrade
+7.新建一张表，建立关系
+#back是反向引用,User和Post是一对多的关系，backref是表示在Post中新建一个属性author，关联的是Post中的user_id外键关联的User对象。
+#lazy属性常用的值的含义，select就是访问到属性的时候，就会全部加载该属性的数据;joined则是在对关联的两个表进行join操作，从而获取到所有相关的对象;
+#dynamic则不一样，在访问属性的时候，并没有在内存中加载数据，而是返回一个query对象, 需要执行相应方法才可以获取对象，比如.all()
+posts = db.relationship('Post',backref='author',lazy='dynamic')
+8.添加数据到数据库中
+#创建一个User对象实例
+>>> u = User(username='lyl',email='919188649@qq.com')
+#将实例添加
+>>> db.session.add(u)
+#提交
+>>> db.session.commit()
+9.一对多
+u = User.query.get(1)
+p = Post(body='我第一次提交数据！',author=u)
+p = Post(body='我第二次提交数据了！',author=u)
+查询
+u = User.query.get(1)
+posts = u.posts.all()
+[<Post 我第一次提交数据！>, <Post 我第二次提交数据了！>]

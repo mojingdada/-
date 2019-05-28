@@ -1,0 +1,48 @@
+1.项目初始化
+__init__.py:
+from flask import Flask
+#创建app应用,__name__是python预定义变量，被设置为使用本模块.
+app = Flask(__name__)
+from app import routes
+2.路由
+用@开头，写法为：
+@app.route('/index')
+def fun():
+    .......
+指这个方法应用在路由/index页面下。
+3.项目入口
+单独编一个py文件来作为flask的入口。
+app.run()
+4.模版
+我们可以编写一个html页面来作为页面显示，这个就是模版。
+这是一个html文件例子
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} - 博客</title>
+</head>
+<body>
+        <h1> Hello ,{{ user.username }} !</h1>
+</body>
+</html>
+这里出现{{ }} 意味着变量，可以接受数据的地方。既然在这里写了变量，那么就要在路由中修改对应的格式，因为要把数据返回才可以。
+5.render_template
+user = {'username':'duke'}
+return render_template('index.html',title='我的',user=user)
+通过这种方式可以向模版传入参数。
+6.循环展示
+html页面支持代码写入
+{% if ....%}.... {% endif  %}
+{% for....%}.... {% endfor %}
+{% with...%}.... {% endwith%}
+.....
+7.基类模版
+顾名思义就是为了避免重复代码，基于这个模版，可以重复利用。比如一些页面的固定显示。
+假如我们拥有了base.html，那么我们其他页面需要基于这个页面进行编写，如何假如其他页面的内容呢？
+{% block content %} {% endblock %}这个标签可以帮我们解决。这个是写在基类模版中的。
+在其他页面虚需要这么写
+{% extends 'base.html' %}
+ {% block content %}
+ .......
+ {% endblock %}

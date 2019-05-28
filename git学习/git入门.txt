@@ -1,0 +1,22 @@
+1.git是由C语言开发的。
+2.cvs，svn都是集中式的版本控制软件，而git式分布式版本控制软件。
+3.git init 初始化仓库，可以将指定目录变成git可以管理的仓库。
+4.ls -a 可以查看隐藏文件。
+5.将文件添加到版本库有2步。(以文件名：readme.txt为例)
+  （1）git add readme.txt 将readme.txt加入到仓库。
+  （2）git commit -m“一些说明” 将文件提交到仓库。
+6.git status 查看仓库当前状态，告诉你文件是否被修改。
+7.git diff 可以查看修改内容。
+8.git log 显示从最近到最远的提交日志，可以加上--pretty=oneline参数简化输出。
+9.在git中用HEAD表示当前版本，上一个版本就是HEAD^,上上个版本就是HEAD^^，上100个版本就是HEAD-100。
+10.git reset --hard HEAD^ 回退到上一个版本。
+11.可以根据commit id来指定回退到某个版本。
+   git reset --hard “commit id”
+12.git reflog 会记录你每一次的命令。
+13.版本库
+   工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。
+   Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及
+指向master的一个指针叫HEAD。
+14.每次更新版本都要遵从2步，add->commit
+15.rm readme.txt会删除工作区的文件。如果是想要彻底删除需要使用git rm readme.txt，这样版本库中的文件也会删除。如果是误删除，
+可以使用git checkout -- readme.txt 进行恢复。

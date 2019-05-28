@@ -1,0 +1,39 @@
+1.form.py
+from flask_wtf import FlaskForm
+from wtforms import StringField,PasswordField,BooleanField,SubmitField
+from wtforms.validators import DataRequired
+
+class LoginForm(FlaskForm):
+    #DataRequired，当你在当前表格没有输入而直接到下一个表格时会提示你输入
+    username = StringField('用户名',validators=[DataRequired(message='请输入名户名')])
+    password = PasswordField('密码',validators=[DataRequired(message='请输入密码')])
+    remember_me = BooleanField('记住我')
+    submit = SubmitField('登录')
+2.上述代码导入的模块是编写一个简单登录的基本模块
+3.该类继承于FlaskFrom这个类
+4.wtforms提供了丰富的控件
+5.DataRequired，当你在当前表格没有输入而直接到下一个表格时会提示你输入。
+6.写在页面中
+<form action="" method="post">用来将传入的数据放入包体中。
+7.用flash来传递信息
+#验证表格中的数据格式是否正确
+    if form.validate_on_submit():
+        #闪现的信息会出现在页面，当然在页面上要设置
+        flash('用户登录的名户名是:{} , 是否记住我:{}'.format(
+            form.username.data,form.remember_me.data))
+        #重定向至首页
+        return redirect('/index')
+8.在重定向的页面接收flash传递的信息
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+            <ur>
+                {% for message in messages %}
+                <li>
+                    {{message}}
+                </li>
+                {% endfor %}
+            </ur>
+      {% endif %}
+{% endwith %}
+9.url_for
+url_for('视图函数名')，得到视图函数的链接。

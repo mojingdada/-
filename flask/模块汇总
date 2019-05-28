@@ -1,0 +1,43 @@
+1.flask
+Flask 本身相当于一个内核，其他几乎所有的功能都要用到扩展（邮件扩展Flask-Mail，用户认证Flask-Login，数据库Flask-SQLAlchemy），都需要用第三方的扩展来实现。比如可以用 Flask 扩展加入ORM、窗体验证工具，文件上传、身份验证等。Flask 没有默认使用的数据库，你可以选择 MySQL，也可以用 NoSQL。
+其 WSGI 工具箱采用 Werkzeug（路由模块），模板引擎则使用 Jinja2。这两个也是 Flask 框架的核心。
+2.from flask import render_template
+模版方法，将需要展示的数据传递给模板进行显示。
+3.flask-wtf
+表单的集成模块
+StringField,PasswordField,BooleanField,SubmitField
+4.from flask import flash
+flash传递数据，处理表单数据
+5.from flask import redirect
+进行重定向
+6.flask-sqlalchemy 操作数据库
+7.flask-migrate 管理迁移数据库
+8.pymysql 在python3中不再支持mysqldb，因此我们还需要安装pymysql
+
+Flask常用扩展包：
+Flask-SQLalchemy：操作数据库；
+Flask-script：插入脚本；
+Flask-migrate：管理迁移数据库；
+Flask-Session：Session存储方式指定；
+Flask-WTF：表单；
+Flask-Mail：邮件；
+Flask-Bable：提供国际化和本地化支持，翻译；
+Flask-Login：认证用户状态；
+Flask-OpenID：认证；
+Flask-RESTful：开发REST API的工具；
+Flask-Bootstrap：集成前端Twitter Bootstrap框架；
+Flask-Moment：本地化日期和时间；
+Flask-Admin：简单而可扩展的管理接口的框架
+
+Flask有两大核心：Werkzeug和Jinja2
+   - Werkzeug实现路由、调试和Web服务器网关接口
+   - Jinja2实现了模板。
+Werkzeug是一个遵循WSGI协议的python函数库
+   - 其内部实现了很多Web框架底层的东西，比如request和response对象；
+   - 与WSGI规范的兼容；支持Unicode；
+   - 支持基本的会话管理和签名Cookie；
+   - 集成URL请求路由等。
+Werkzeug库的 routing 模块负责实现 URL 解析。不同的 URL 对应不同的视图函数，routing模块会对请求信息的URL进行解析，匹配到URL对应的视图函数，执行该函数以此生成一个响应信息。
+routing模块内部有：
+Rule类
+   用来构造不同的URL模式的对象，路由URL规则

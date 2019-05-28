@@ -1,0 +1,7 @@
+1.向关联远程仓库传送文件
+--git remote add origin git@github.com:mojingdada/<repo name>  关联github上的新建repo
+--git branch --set-upstream-to=origin/master master  将远程库与本地库关联起来
+--git pull  首先获取github的文件，使本地仓库与远程仓库一致
+如出现 fatal: 拒绝合并无关的历史
+--git pull --allow-unrelated-histories（忽略不同版本造成的影响）
+--git push origin master  向远程库推送本地库的文件
