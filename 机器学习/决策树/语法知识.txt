@@ -1,0 +1,12 @@
+1.append和extend的区别
+都作用于列表
+append在后面追加列表：
+a=[1,2,3]
+b=[4,5,6]
+a=a.append(b)
+>>a
+[1,2,3,[4,5,6]]
+extend则不同
+a=a.extend(b)
+>>a
+[1,2,3,4,5,6]
