@@ -10,3 +10,5 @@ extend则不同
 a=a.extend(b)
 >>a
 [1,2,3,4,5,6]
+2.字典排序
+sorted（字典.items(),key=lambda x:x[0],reverser=True）

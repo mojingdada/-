@@ -23,7 +23,7 @@
 恢复后，stash不删除：-- git stash apply，你需要用-- git stash drop删除
 另一种方式是-- git stash pop，恢复的同时将stash内容也删除。
 你可以多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash，用命令：
--- git stash apply stash@{0}
+-- git stash apply stash@{0}	
 9.如果丢弃一个没有合并的分支，可以通过git branch -D<name>强行删除。
 10.当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。
 11.查看远程库信息
