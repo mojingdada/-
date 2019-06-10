@@ -12,3 +12,5 @@ a=a.extend(b)
 [1,2,3,4,5,6]
 2.字典排序
 sorted（字典.items(),key=lambda x:x[0],reverser=True）
+3.字典.keys()
+输出字典的key
