@@ -12,3 +12,10 @@ a=a.extend(b)
 [1,2,3,4,5,6]
 2.字典排序
 sorted（字典.items(),key=lambda x:x[0],reverser=True）
+3.pickle
+储存 pickle.dump(list,filename)
+释放 pickle.load(filename)
+pickle 是一个 python 中, 压缩/保存/提取 文件的模块，字典和列表都是能被保存的.
+在Pickle模块中还有dumps()和loads()函数,他们是直接实现一个二进制和pickle表示对象的转换,不用打开文件(这点与dump不同)
+4.python 写入文件要用wb,读取要用rb.
+python2以ASCII形式保存，而在python3中pickle是使用转换二进制的数据压缩方法保存数据
