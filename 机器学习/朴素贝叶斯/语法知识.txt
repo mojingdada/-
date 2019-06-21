@@ -1,0 +1,6 @@
+1.python3中打开文件并读取
+file = open('file.txt','rb').read()
+2.正则处理
+import re
+regEx = re.compile(r'\W+') //'W+'为规则，可根据自己意愿选择规则
+listOfTokens = regEx.split(str)
